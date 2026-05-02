@@ -45,4 +45,10 @@ ul li{
   padding: 15px 32px;
   font-size: 16px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+.not_badge{
+  opacity: 0.4;
+  filter: grayscale(100%);
 }

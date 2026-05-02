@@ -25,13 +25,16 @@ function signupUpload(firstName, lastName, email, passwd){
             password: passwd
         })
     })
-    .then(response => response.json())
     .then(data => {
+        localStorage.setItem("user_id", JSON.stringify(data));
+        localStorage.setItem("points", 0);
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("lastName", lastName);
+
         console.log(data);
-        alert("Signup request sent.");
     })
     .catch(error => {
         console.error(error);
-        alert("Signup failed. Check the console for details.");
+        alert(error.message);
     });
 }
