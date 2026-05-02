@@ -26,12 +26,11 @@ function signupUpload(firstName, lastName, email, passwd){
         })
     })
     .then(data => {
-        localStorage.setItem("user_id", stringify(data));
+        localStorage.setItem("user_id", JSON.stringify(data));
         console.log(data);
-        alert("Signup request sent.");
     })
     .catch(error => {
         console.error(error);
-        alert("Signup failed. Check the console for details.");
+        alert(error.message);
     });
 }
