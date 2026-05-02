@@ -12,9 +12,14 @@ function getCommunityEvents()
             userid: localStorage.getItem("user_id")
         })
     })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Request failed with status ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
         console.log(data);
-        return data.json();
     })
     .catch(error => {
         console.error(error);

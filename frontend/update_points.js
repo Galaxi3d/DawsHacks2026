@@ -1,7 +1,6 @@
-
-
 function updatePoints(point_increase) 
 {
+    new_points = parseInt(localStorage.getItem("points")) + point_increase;
     fetch("http://10.230.122.4:5001/api/usercontrollers/UpdateUserPoints", {
         method: "POST",
         headers: {
@@ -9,19 +8,17 @@ function updatePoints(point_increase)
         },
         body: JSON.stringify({
             user_id: localStorage.getItem("user_id"),
-            points: parseInt(localStorage.getItem("points")) + point_increase
+            points: new_points
         })
     })
     .then(data => {
-        localStorage.setItem("points", parseInt(JSON.stringify(data)));
+        localStorage.setItem("points", new_points);
+        document.getElementById("points").textContent = new_points;
         console.log(data);
     })
     .catch(error => {
         console.error(error);
         alert(error.message);
     });
-
-    let points = localStorage.getItem("points");
-    document.getElementById("points").textContent = points;
 
 }

@@ -16,17 +16,27 @@ function loginUpload(email, passwd){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            email,
+            email : email,
             password: passwd
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Request failed with status ${response.message}`);
+        }
+        return response.json();
+    })
     .then(data => {
-        console.log(data);
-        alert("Signup request sent.");
+        if (data.success) {
+            localStorage.setItem("user_id", data.user_id);
+            localStorage.setItem("points", data.points);
+            localStorage.setItem("firstName", data.firstName);
+            localStorage.setItem("lastName", data.lastName);
+            localStorage.setItem("email", email);
+        }
     })
     .catch(error => {
         console.error(error);
-        alert("Signup failed. Check the console for details.");
+        alert(error.message);
     });
 }
