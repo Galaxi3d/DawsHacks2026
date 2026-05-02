@@ -1,7 +1,3 @@
-BRIDGES ARE COOL
-\
-yesyes
-
-
+The Greatest Codemam's submission to the Dawshacks hackathon. The team consists of Anis Redmond, Luca O'Neil, Peyton Mandato, and Sacha Louro. The project consists of a website to gameify caring for the environment by giving the user points for helping the environment. community events are also available.
 
 slides: https://docs.google.com/presentation/d/1ImJCOHxVnBy5qMgt9gRBuCW6Xd6RRbbKBFWgN6bAPhE/edit?usp=sharing
