@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=G0jO8kUrg-I
 
-const blankBox = document.getElementById("blank_box");
-const listContainer = document.getElementById("list_container");
+const blankBox = document.getElementById("personal_blank_box");
+const listContainer = document.getElementById("personal_list_container");
 function AddTask(){
     if(blankBox.value===''){
         alert("There is no task to check off!")
