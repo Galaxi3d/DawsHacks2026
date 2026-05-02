@@ -19,14 +19,14 @@ function signupUpload(firstName, lastName, email, passwd){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
+            firstName,
+            lastName,
+            email,
             password: passwd
         })
     })
     .then(data => {
-        localStorage.setItem("user_id", JSON.stringify(data));
+        localStorage.setItem("userId", JSON.stringify(data));
         localStorage.setItem("points", 0);
         localStorage.setItem("firstName", firstName);
         localStorage.setItem("lastName", lastName);
