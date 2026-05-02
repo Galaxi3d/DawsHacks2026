@@ -16,24 +16,38 @@ function loginUpload(email, passwd){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            email : email,
+            email,
             password: passwd
         })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Request failed with status ${response.status}`);
+    .then(response => response.text().then(text => {
+        const body = text ? JSON.parse(text) : {};
+        return { ok: response.ok, body };
+    }))
+    .then(({ ok, body }) => {
+        if (!ok) {
+            throw new Error(body.message || body.error || "Login failed. Check your email and password.");
         }
-        return response.json();
-    })
-    .then(data => {
-        if (data.success) {
-            localStorage.setItem("user_id", data.user_id);
-            localStorage.setItem("points", data.points);
-            localStorage.setItem("firstName", data.firstName);
-            localStorage.setItem("lastName", data.lastName);
-            localStorage.setItem("email", email);
+
+        const userId = body.userId || body.user_id || body.id;
+        const firstName = body.firstName || body.first_name;
+        const lastName = body.lastName || body.last_name;
+
+        if (userId) {
+            localStorage.setItem("user_id", userId);
         }
+        if (body.points !== undefined) {
+            localStorage.setItem("points", body.points);
+        }
+        if (firstName) {
+            localStorage.setItem("firstName", firstName);
+        }
+        if (lastName) {
+            localStorage.setItem("lastName", lastName);
+        }
+        localStorage.setItem("email", email);
+
+        window.location.href = "complete_tasks.html";
     })
     .catch(error => {
         console.error(error);
