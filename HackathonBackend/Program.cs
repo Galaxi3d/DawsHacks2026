@@ -11,8 +11,20 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-var app = builder.Build();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy
+            .WithOrigins("http://YOUR_FRIENDS_IP:3000") // ← their IP + frontend port
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
+
+var app = builder.Build();
+app.UseCors("AllowFrontend");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

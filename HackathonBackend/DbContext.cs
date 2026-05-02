@@ -1,6 +1,7 @@
 using System.Data.Common;
 using System.Runtime.Serialization;
 using Microsoft.EntityFrameworkCore;
+using Models.Backend;
 
 public class AppContext : DbContext
 {
@@ -9,11 +10,12 @@ public class AppContext : DbContext
     {
     }
     public DbSet<Models.Backend.User> Users { get; set; }
+    public DbSet<Models.Backend.CommunityEvents> CommunityEvents { get; set; }
 
-    // protected override void OnModelCreated(ModelBuilder modelBuilder)
-    // {
-    //     modelBuilder.Entity<Models.Backend.User>()
-    //         .HasIndex(u => u.Email)
-    //         .IsUnique();
-    // }
+    protected override void OnModelCreated(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Models.Backend.User>()
+            .HasIndex(u => u.ID)
+            .IsUnique();
+    }
 }

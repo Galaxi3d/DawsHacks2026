@@ -71,6 +71,40 @@ public class UserControllers : ControllerBase
         return Ok(user);
     }
 
+    [HttpPatch("UpdateUserBadge")]
+    public async Task<IActionResult> UpdateUserBadge([FromQuery] Guid id, [FromQuery] string badge)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.ID == id);
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+
+        user.Badges.Add(badge);
+
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        return Ok("Badge updated successfully");
+    }
+
+    [HttpPatch("UpdateUserPoints")]
+    public async Task<IActionResult> UpdateUserPoints([FromQuery] Guid id, [FromQuery] uint points)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.ID == id);
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+
+        user.Points += points;
+
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        return Ok("Points updated successfully");
+    }
+
     [HttpGet]
     public IActionResult GetUsers()
     {
