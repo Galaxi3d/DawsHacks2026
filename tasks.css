@@ -41,7 +41,7 @@ ul li span{
 }
 
 body {
-    background: linear-gradient(180deg, #fdf6ec 0%, #f3ead6 50%, #f8f1de 100%);
+    background: rgb(163, 177, 138);
     color: #4b3a24;
 }
 
@@ -53,8 +53,8 @@ body {
 
 .personal_tasks,
 .community_tasks {
-    width: min(100%, 760px);
-    background: linear-gradient(145deg, #f6e7d5 0%, #f0dcc3 100%);
+    width: min(100%, 660px);
+    background: linear-gradient(145deg, #99be98 0%, #7ad077 100%);
     border: 2px solid rgba(112, 83, 56, 0.35);
     border-radius: 24px;
     box-shadow: 0 16px 35px rgba(83, 58, 33, 0.18);
@@ -98,7 +98,7 @@ body {
     padding: 12px 20px;
     border: none;
     border-radius: 18px;
-    background: linear-gradient(135deg, #d6a368 0%, #f0c69b 100%);
+    background: rgb(85, 150, 130);
     color: #4b2f10;
     font-weight: 700;
     cursor: pointer;
