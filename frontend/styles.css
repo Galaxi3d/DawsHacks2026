@@ -37,3 +37,12 @@ nav ul li a:hover, nav ul li a, nav ul li a:visited, nav ul li a:link, nav ul li
 ul li{
   float : left;
 }
+
+.button{
+  background-color: #344e41;
+  border: none;
+  color: rgb(163, 177, 138);
+  padding: 15px 32px;
+  font-size: 16px;
+  cursor: pointer;
+}
