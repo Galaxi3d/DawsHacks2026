@@ -21,4 +21,7 @@ function updatePoints(point_increase)
         alert(error.message);
     });
 
+    let points = localStorage.getItem("points");
+    document.getElementById("points").textContent = points;
+
 }
