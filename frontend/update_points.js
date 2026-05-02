@@ -13,7 +13,7 @@ function updatePoints()
         })
     })
     .then(data => {
-        localStorage.setItem("points", JSON.stringify(data));
+        localStorage.setItem("points", parseInt(JSON.stringify(data)));
         console.log(data);
     })
     .catch(error => {

@@ -27,6 +27,10 @@ function signupUpload(firstName, lastName, email, passwd){
     })
     .then(data => {
         localStorage.setItem("user_id", JSON.stringify(data));
+        localStorage.setItem("points", 0);
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("lastName", lastName);
+
         console.log(data);
     })
     .catch(error => {
