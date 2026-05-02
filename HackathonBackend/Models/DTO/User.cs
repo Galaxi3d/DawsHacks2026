@@ -7,5 +7,11 @@ namespace Models.DTO
     public required string Password { get; set; }
     public required string Email { get; set; }
 }
+
+    public class LogInUserRequest
+    {
+        public required string Email { get; set; }
+        public required string Password { get; set; }
+    }
 }
 

@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -14,25 +15,25 @@ public class CommunityEventsController : ControllerBase
     }
 
 
-    // [HttpGet("GetBatchOfEvents")]
-    // public async Task<IActionResult> GetBatchOfEvents([FromBody] Models.DTO.CommunityEventBatchRequest request) // TODO: add filters + user recommendations
-    // {
+    [HttpGet("GetCommunityEvents")]
+    public async Task<IActionResult> GetBatchOfEvents([FromBody] Models.DTO.CommunityEventBatchRequest request) // TODO: add filters + user recommendations
+    {
 
-    //     if (request.StartIndex < 0 || request.EndIndex < request.StartIndex)
-    //     {
-    //         return BadRequest("Invalid index range");
-    //     }
+        if (request.StartIndex < 0 || request.EndIndex < request.StartIndex)
+        {
+            return BadRequest("Invalid index range");
+        }
 
-    //     /// a simple algorithm that takes all the community events and finds the ones that match the user.
-    //     var events = await _context.CommunityEvents
-    //         .Where(e => request.Tags == null || request.Tags.Any(tag => e.Tags.Contains(tag)) 
-    //         && (e.Date >= DateTime.Now))
-    //         .Skip(request.StartIndex)
-    //         .Take(request.EndIndex - request.StartIndex + 1)
-    //         .ToListAsync();
+        /// a simple algorithm that takes all the community events and finds the ones that match the user.
+        var events = await _context.CommunityEvents
+            .Where(e => request.Tags == null || request.Tags.Any(tag => e.Tags.Contains(tag)) 
+            && (e.Date >= DateTime.Now))
+            .Skip(request.StartIndex)
+            .Take(request.EndIndex - request.StartIndex + 1)
+            .ToListAsync();
 
-    //     return Ok(events);
-    // }
+        return Ok(events);
+    }
 
     [HttpPost("CreateEvent")]
     public async Task<IActionResult> CreateEvent([FromBody] Models.DTO.CommunityEvents newEvent)

@@ -48,16 +48,16 @@ public class UserControllers : ControllerBase
 
 
     [HttpGet("LoginUser")]
-    public async Task<IActionResult> LoginUser([FromQuery] string email, [FromQuery] string password)
+    public async Task<IActionResult> LoginUser([FromBody] Models.DTO.LogInUserRequest request)
     {
-        var hashedPassword = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(password));
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == hashedPassword);
+        var hashedPassword = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(request.Password));
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email && u.Password == hashedPassword);
         if (user == null)
         {
             return BadRequest("Invalid email or password");
         }
 
-        return Ok(user.ID);
+        return Ok(user);
     }
 
     [HttpGet("GetUserById")]

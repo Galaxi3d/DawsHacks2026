@@ -17,7 +17,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .AllowAnyOrigin() // ← their IP + frontend port
+            .AllowAnyOrigin() // allows anyone to use the api if they ahve the local IP of the device 
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
