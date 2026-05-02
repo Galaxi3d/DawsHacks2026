@@ -7,10 +7,11 @@
 </head>
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tasks.css">
 
 <body>
     <nav>
-        <ul>
+        <ul class = "topnav">
             <a href = "index.html"><li>Home Page</li></a>
             <a href = "about.html"><li>About Us </li></a>
             <a href = "login.html"><li>Login</li></a>
@@ -19,5 +20,17 @@
     <h1>Start Tasking</h1>
     <h2>Welcome to the community page!</h2>
     <p>Here, you can create and complete personal tasks or community tasks to earn eco-points.</p>
+    <div class = "container">
+        <div class = "personal_tasks">
+            <h3>Personal Tasks</h3>
+            <div class = "row" id = "blank_box" placeholder = "Add a task">
+                <input type = "text" id>
+                <button>Add</button>
+            </div>
+            <input class = "todo__value" type = text>
+            <input class = "todo__checkbox" type = checkbox>
+        </div>
+    </div>
+
 </body>
 </html>
