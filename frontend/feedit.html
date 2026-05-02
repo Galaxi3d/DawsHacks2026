@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="styles.css">
+<body>
+
+
+    <a href = "index.html">
+    <img src="/images/eco_pal_original.webp" alt="Go to the Home Page" height = 60 title = "Go to the Home Page"></a>
+
+    <a href = "achievements.html"><button class = "button">ACHIEVEMENTS</button></a>
+    <a href = "about.html"><button class = "button">ABOUT US</button></a>
+    <a href = "complete_tasks.html"><button class = "button">SOLO TASKS</button></a>
+    <hr>        
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; margin-top: 20px;">
+        <img id="eco-pal" src = "/images/eco_pal_original.webp" title = "Click to feed" height = 500 style="cursor: pointer;">
+        <h2>Get motivation from the eco-pal!!!</h2>
+        <p style="font-weight: bold; font-size: 1.2rem; margin: 0;">Feed motivation: <span id="feed-count">0</span></p>
+        <button id="feed-button" class="button">FEED</button>
+    </div>
+
+    <script>
+        const feedCountElement = document.getElementById("feed-count");
+        const ecoPalImage = document.getElementById("eco-pal");
+        const feedButton = document.getElementById("feed-button");
+        let feedCount = 0;
+        const motivationMessages = [
+            "Keep going, you're doing great!",
+            "Every step counts towards a greener future!",
+            "Your efforts are making a difference!",
+            "Stay motivated, the planet thanks you!",
+            "Together, we can create a sustainable world!",
+            "Your actions inspire others to join the cause!",
+            "Keep up the amazing work, eco-warrior!",
+            "Small actions lead to big changes!",
+            "You're a champion for the environment!",
+            "Your dedication is making the world a better place!",
+            
+
+        ];
+        function increaseFeedCount() {
+            feedCount += 1;
+            feedCountElement.textContent = motivationMessages[feedCount % motivationMessages.length];
+        }
+
+        ecoPalImage.addEventListener("click", increaseFeedCount);
+        feedButton.addEventListener("click", increaseFeedCount);
+    </script>
+
+     
+</body>
+</html>

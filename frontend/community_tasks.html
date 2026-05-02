@@ -10,43 +10,18 @@
 <link rel="stylesheet" href="tasks.css">
 
 <body>
-    <!-- <nav>
-        <ul class = "topnav">
-            <a href = "index.html"><li>Home Page</li></a>
-            <a href = "about.html"><li>About Us </li></a>
-            <a href = "login.html"><li>Login</li></a>
-        </ul>
-    </nav> -->
     <a href = "index.html">
     <img src="/images/eco_pal_original.webp" alt="Go to the Home Page" height = 60 title = "Go to the Home Page"></a>
     <a href = "achievements.html"><button class = "button">ACHIEVEMENTS</button></a>
     <a href = "about.html"><button class = "button">ABOUT US</button></a>
-    <a href = "community_tasks.html"><button class = "button">COMMUNITY TASKS</button></a>
+    <a href = "complete_tasks.html"><button class = "button">SOLO TASKS</button></a>
     <hr>
-    
-    
-    <h1>Start Tasking</h1>
-    <h2>Welcome to the community page!</h2>
-    <p>Here, you can create and complete personal tasks or community tasks to earn eco-points. The more do the better!!!</p>
+
+
+    <h1>Community Tasks</h1>
+    <p>Here are some community tasks you can participate in to help the environment!</p>
     <h4>Eco-points: <span id="points" ></span></h4>
-    <!-- Creating a list of personal tasks -->
     <div class = "container">
-        <div class = "personal_tasks">
-            <!-- title and box to add tasks -->
-            <h3>Personal Tasks</h3>
-            <div class = "row" >
-                <input type = "text" id = "personal_blank_box" placeholder = "Add a task">
-                <button onclick = "AddTask()">Add</button>
-            </div>
-
-            <ul id = "personal_list_container">
-            </ul>
-        </div>
-    </div>
-
-    <hr>
-    <!-- Creating a list of community tasks -->
-    <!-- <div class = "container">
         <div class = "community_tasks">
             <h3>Community Tasks</h3>
             <ul id = "community_list_container">
@@ -57,15 +32,15 @@
                 <li>Creat an educational youtube video about climate-change! (100 points)</li>
             </ul>
         </div>
-    </div> -->
+    </div>
 
 <script>
     document.getElementById("points").textContent = localStorage.getItem("points");
 </script>
 
-
 <script src = "get_community_events.js"></script>
 <script src = "update_points.js"></script>
 <script src = "script.js"></script>
+
 </body>
 </html>

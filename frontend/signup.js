@@ -19,19 +19,15 @@ function signupUpload(firstName, lastName, email, passwd){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            firstName,
-            lastName,
-            email,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
             password: passwd
         })
     })
-    .then(response => response.json().then(body => ({ ok: response.ok, body })))
-    .then(({ ok, body }) => {
-        if (!ok || body.success === false) {
-            throw new Error(body.message || body.error || "Signup failed. Please try again.");
-        }
+    .then(result => {
 
-        localStorage.setItem("user_id", body.userId || body.user_id || body.id || "");
+        localStorage.setItem("user_id", result.userid);
         localStorage.setItem("points", 0);
         localStorage.setItem("firstName", firstName);
         localStorage.setItem("lastName", lastName);

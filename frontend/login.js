@@ -16,7 +16,7 @@ function loginUpload(email, passwd){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            email,
+            email: email,
             password: passwd
         })
     })
