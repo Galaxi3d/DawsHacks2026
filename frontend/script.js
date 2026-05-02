@@ -8,6 +8,7 @@ function AddTask(){
         alert("There is no task to check off!")
     }
     else{
+        //alert("Task added to your list! Check it off when you complete it to earn points!")
         let li=document.createElement("li");
         li.innerHTML=blankBox.value;
         listContainer.appendChild(li);
@@ -15,7 +16,6 @@ function AddTask(){
         let span = document.createElement("span");
         span.innerHTML="X";
         li.appendChild(span);
-        updatePoints(10);
     }
     blankBox.value = '';
     saveData()
@@ -30,11 +30,14 @@ listContainer.addEventListener("click", function(e){
         e.target.parentElement.remove();
     }
     saveData()
+
+    updatePoints(10);
 });
 
 communityListContainer.addEventListener("click", function(e){
     if(e.target.tagName==="LI"){
         e.target.classList.toggle("checked");
+        updatePoints(100);
     }
 });
 // This saves the list item as data in the browser's storage (I think)

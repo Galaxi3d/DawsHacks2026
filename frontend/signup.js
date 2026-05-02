@@ -19,9 +19,9 @@ function signupUpload(firstName, lastName, email, passwd){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            firstName,
-            lastName,
-            email,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
             password: passwd
         })
     })
