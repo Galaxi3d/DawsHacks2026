@@ -1,3 +1,7 @@
+if (localStorage.getItem("points") === null) {
+    localStorage.setItem("points", 0);
+}
+
 function updatePoints(point_increase) 
 {
     new_points = parseInt(localStorage.getItem("points")) + point_increase;

@@ -3,6 +3,7 @@
 const blankBox = document.getElementById("personal_blank_box");
 const listContainer = document.getElementById("personal_list_container");
 const communityListContainer = document.getElementById("community_list_container");
+const list_container = document.getElementById("list_container");
 function AddTask(){
     if(blankBox.value===''){
         alert("There is no task to check off!")
@@ -34,12 +35,7 @@ listContainer.addEventListener("click", function(e){
     updatePoints(10);
 });
 
-communityListContainer.addEventListener("click", function(e){
-    if(e.target.tagName==="LI"){
-        e.target.classList.toggle("checked");
-        updatePoints(100);
-    }
-});
+
 // This saves the list item as data in the browser's storage (I think)
 function saveData(){
     localStorage.setItem("data", listContainer.innerHTML)

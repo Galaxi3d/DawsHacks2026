@@ -28,8 +28,9 @@ ul li::before{
 }
 
 /* adds line through for completed tasks */
-ul li.checked{
+li.checked{
     text-decoration: line-through;
+    color: gray;
 }
 
 /* not working check mark addition */
