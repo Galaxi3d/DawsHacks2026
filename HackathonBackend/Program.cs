@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins("http://YOUR_FRIENDS_IP:3000") // ← their IP + frontend port
+            .AllowAnyOrigin() // ← their IP + frontend port
             .AllowAnyHeader()
             .AllowAnyMethod();
     });

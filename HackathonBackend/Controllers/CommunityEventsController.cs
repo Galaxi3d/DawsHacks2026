@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
+using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -15,23 +14,25 @@ public class CommunityEventsController : ControllerBase
     }
 
 
-    [HttpGet("GetBatchOfEvents")]
-    public async Task<IActionResult> GetBatchOfEvents([FromQuery] int startIndex = 0, [FromQuery] int endIndex = 4) // TODO: add filters + user recommendations
-    {
+    // [HttpGet("GetBatchOfEvents")]
+    // public async Task<IActionResult> GetBatchOfEvents([FromBody] Models.DTO.CommunityEventBatchRequest request) // TODO: add filters + user recommendations
+    // {
 
-        if (startIndex < 0 || endIndex < startIndex)
-        {
-            return BadRequest("Invalid index range");
-        }
+    //     if (request.StartIndex < 0 || request.EndIndex < request.StartIndex)
+    //     {
+    //         return BadRequest("Invalid index range");
+    //     }
 
-        var events = await _context.CommunityEvents
-  
-            .Skip(startIndex)
-            .Take(endIndex - startIndex + 1)
-            .ToListAsync();
+    //     /// a simple algorithm that takes all the community events and finds the ones that match the user.
+    //     var events = await _context.CommunityEvents
+    //         .Where(e => request.Tags == null || request.Tags.Any(tag => e.Tags.Contains(tag)) 
+    //         && (e.Date >= DateTime.Now))
+    //         .Skip(request.StartIndex)
+    //         .Take(request.EndIndex - request.StartIndex + 1)
+    //         .ToListAsync();
 
-        return Ok(events);
-    }
+    //     return Ok(events);
+    // }
 
     [HttpPost("CreateEvent")]
     public async Task<IActionResult> CreateEvent([FromBody] Models.DTO.CommunityEvents newEvent)
@@ -49,12 +50,13 @@ public class CommunityEventsController : ControllerBase
             Location = newEvent.Location,
             ImageUrl = newEvent.ImageUrl,
             ID = Guid.NewGuid(),
+            OriginalUrl = newEvent.OriginalUrl
         };
 
         _context.CommunityEvents.Add(backendEvent);
         await _context.SaveChangesAsync();
 
-        return Ok(backendEvent);
+        return Ok(backendEvent.ID);
     }
 
     

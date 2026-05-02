@@ -1,8 +1,8 @@
+using System;
+using System.Linq;
+using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
 
 [ApiController]
 [Route("api/[controller]")]
@@ -35,7 +35,7 @@ public class UserControllers : ControllerBase
             ID = Guid.NewGuid(),
             FirstName = user.FirstName,
             LastName = user.LastName,
-            Password = user.Password,
+            Password = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(user.Password)),
             Email = user.Email
         };
 
@@ -50,7 +50,8 @@ public class UserControllers : ControllerBase
     [HttpGet("LoginUser")]
     public async Task<IActionResult> LoginUser([FromQuery] string email, [FromQuery] string password)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+        var hashedPassword = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(password));
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == hashedPassword);
         if (user == null)
         {
             return BadRequest("Invalid email or password");
@@ -85,7 +86,7 @@ public class UserControllers : ControllerBase
         _context.Users.Update(user);
         await _context.SaveChangesAsync();
 
-        return Ok("Badge updated successfully");
+        return Ok();
     }
 
     [HttpPatch("UpdateUserPoints")]
@@ -102,10 +103,44 @@ public class UserControllers : ControllerBase
         _context.Users.Update(user);
         await _context.SaveChangesAsync();
 
-        return Ok("Points updated successfully");
+        return Ok();
     }
 
-    [HttpGet]
+    [HttpPatch("AddUserTask")]
+    public async Task<IActionResult> AddUserTask([FromQuery] Guid id, [FromQuery] string task)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.ID == id);
+        if (user == null)        {
+            return NotFound("User not found");
+        }
+        user.Tasks.Add(task);
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+
+    [HttpDelete("RemoveUserTask")]
+    public async Task<IActionResult> RemoveUserTask([FromQuery] Guid id, [FromQuery] string task)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.ID == id);
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+        user.Tasks.Remove(task);
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+
+    [HttpGet("GetUserLeaderboard")]
+    public async Task<IActionResult> GetUserLeaderboard()
+    {
+        var users = await _context.Users.OrderByDescending(u => u.Points).Take(10).ToListAsync();
+        return Ok(users);
+    }
+
+    [HttpGet("GetUsers")]
     public IActionResult GetUsers()
     {
         var users = _context.Users.ToList();

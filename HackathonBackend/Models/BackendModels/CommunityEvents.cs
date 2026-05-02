@@ -8,5 +8,7 @@ namespace Models.Backend
         public DateTime Date { get; set; }
         public string Location { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
+        public string OriginalUrl { get; set; } = string.Empty;
+        public List<string> Tags { get; set; } = [];
     }
 }
