@@ -15,6 +15,7 @@ function AddTask(){
         let span = document.createElement("span");
         span.innerHTML="X";
         li.appendChild(span);
+        
     }
     blankBox.value = '';
     saveData()

@@ -25,8 +25,8 @@ function signupUpload(firstName, lastName, email, passwd){
             password: passwd
         })
     })
-    .then(response => response.json())
     .then(data => {
+        localStorage.setItem("user_id", stringify(data));
         console.log(data);
         alert("Signup request sent.");
     })
