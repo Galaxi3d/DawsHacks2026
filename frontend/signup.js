@@ -33,6 +33,8 @@ function signupUpload(firstName, lastName, email, passwd){
         localStorage.setItem("email", email);
 
         console.log(data);
+
+        window.location.replace("/complete_tasks.html");
     })
     .catch(error => {
         console.error(error);
