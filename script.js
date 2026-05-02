@@ -23,11 +23,11 @@ function AddTask(){
 listContainer.addEventListener("click", function(e){
     if(e.target.tagName==="LI"){
         e.target.classList.toggle("checked"); 
-        saveData()
     }
     else if(e.target.tagName==="SPAN"){
         e.target.parentElement.remove();
     }
+    saveData()
 });
 // This saves the list item as data in the browser's storage (I think)
 function saveData(){
