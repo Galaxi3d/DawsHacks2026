@@ -11,3 +11,7 @@ ul {
 ul li{
   float : left;
 }
+
+h1{
+  text-align: center;
+}
