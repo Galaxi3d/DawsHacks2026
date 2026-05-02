@@ -34,7 +34,6 @@ function signupUpload(firstName, lastName, email, passwd){
 
         console.log(data);
 
-        window.location.replace("/complete_tasks.html");
     })
     .catch(error => {
         console.error(error);
