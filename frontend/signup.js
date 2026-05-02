@@ -30,6 +30,7 @@ function signupUpload(firstName, lastName, email, passwd){
         localStorage.setItem("points", 0);
         localStorage.setItem("firstName", firstName);
         localStorage.setItem("lastName", lastName);
+        localStorage.setItem("email", email);
 
         console.log(data);
     })

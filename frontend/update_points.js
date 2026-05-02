@@ -1,6 +1,6 @@
 
 
-function updatePoints() 
+function updatePoints(point_increase) 
 {
     fetch("http://10.230.122.4:5001/api/usercontrollers/UpdateUserPoints", {
         method: "POST",
@@ -9,7 +9,7 @@ function updatePoints()
         },
         body: JSON.stringify({
             user_id: localStorage.getItem("user_id"),
-            points: 10
+            points: parseInt(localStorage.getItem("points")) + point_increase
         })
     })
     .then(data => {
