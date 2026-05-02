@@ -25,3 +25,17 @@ ul li.checked{
 ul li.checked::before{
     background-image: url(images/checked.webp);
 }
+
+ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    font-size: 30px;
+}
+
+#list_container{
+    display : flex;
+    flex-direction: column;
+}

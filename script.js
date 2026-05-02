@@ -10,16 +10,23 @@ function AddTask(){
         let li=document.createElement("li");
         li.innerHTML=blankBox.value;
         listContainer.appendChild(li);
-        let 
+        // Adds the x to the end of element
+        let span = document.createElement("span");
+        span.innerHTML="X";
+        li.appendChild(span);
     }
     blankBox.value = '';
     saveData()
 }
 
+
 listContainer.addEventListener("click", function(e){
     if(e.target.tagName==="LI"){
         e.target.classList.toggle("checked"); 
         saveData()
+    }
+    else if(e.target.tagName==="SPAN"){
+        e.target.parentElement.remove();
     }
 });
 // This saves the list item as data in the browser's storage (I think)
