@@ -4,14 +4,9 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: rgb(16, 142, 16);
+  height: 50px;
 }
 
 ul li{
   float : left;
-}
-
-ul {
-  list-style-type: none;
-  margin: 5;
-  padding: 0;
 }
