@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="login.js" defer></script> 
 </head>
 
 <link rel="stylesheet" href="styles.css">
@@ -18,7 +19,19 @@
     </nav>
     <h2>HEADER OF PAGE 4</h2>
     <p>login</p>
-    <!-- put login info -->
+    <label for="email">Email</label>
+    <br>
+    <input type="text" id="email" name="email">
+    <br>
+    <br>
+    <label for="passwd">Password</label>
+    <br>
+    <input type="password" id="passwd" name="passwd">
+    <br>
+    <br>
+    <button onclick="loginValues()">Login</button>
+    <br>
+    <br>
     <a href="signup.html"> new user? sign up here.</a>
 </body>
 </html>
