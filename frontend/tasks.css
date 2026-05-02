@@ -20,7 +20,7 @@ ul li::before{
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-image: url(images/unchecked.webp);
+    background-image: url(./images/unchecked.webp);
     background-size: cover;
     background-position: center;
     top: 12px;
@@ -34,7 +34,7 @@ ul li.checked{
 
 /* not working check mark addition */
 ul li.checked::before{
-    background-image: url(images/checked.webp);
+    background-image: url(./images/checked.webp);
 }
 
 /* X button offset */
@@ -47,7 +47,7 @@ ul li span{
     font-size: 30px;
 }
 
-#list_container{
+#personal_list_container{
     display : flex;
     flex-direction: column;
 }
@@ -134,7 +134,7 @@ list container defined gap */
     box-shadow: 0 10px 18px rgba(112, 83, 56, 0.18);
 }
 
-#list_container {
+#personal_list_container {
     gap: 10px;
 }
 
@@ -144,7 +144,7 @@ ul li {
     border: 1px solid rgba(112, 83, 56, 0.18);
     border-radius: 18px;
     margin-bottom: 10px;
-    padding-left: 62px;
+    /* padding-left: 62px; padding: 12px 16px 12px 90px; */
     position: relative;
     transition: background 0.2s ease;
 }
