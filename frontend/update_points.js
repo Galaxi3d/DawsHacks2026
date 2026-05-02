@@ -2,7 +2,7 @@
 
 function updatePoints() 
 {
-    fetch("http://10.230.122.4:5001/api/usercontrollers/UpdateUserPoints", {//send signup info to db
+    fetch("http://10.230.122.4:5001/api/usercontrollers/UpdateUserPoints", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
